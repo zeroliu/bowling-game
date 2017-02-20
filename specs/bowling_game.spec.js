@@ -14,6 +14,10 @@ describe('Bowling Game', function() {
     game.roll(5);
   };
 
+  let rollStrike = function() {
+    game.roll(10);
+  };
+
   beforeEach(function() {
     game = new Game();
   });
@@ -37,6 +41,14 @@ describe('Bowling Game', function() {
     game.roll(3);
     rollMany(17, 0);
     expect(game.score()).toEqual(16);
+  });
+
+  it('handles one strike', () => {
+    rollStrike();
+    game.roll(3);
+    game.roll(4);
+    rollMany(16, 0);
+    expect(game.score()).toEqual(24);
   });
 });
 

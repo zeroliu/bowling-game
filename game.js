@@ -12,7 +12,11 @@ class Game {
     let score = 0;
     let frameIndex = 0;
     for (let frame = 0; frame < 10; ++frame) {
-      if (this.isSpare_(frameIndex)) {
+      if (this.isStrike_(frameIndex)) {
+        //strike
+        score += 10 + this.rolls_[frameIndex + 1] + this.rolls_[frameIndex + 2];
+        frameIndex++;
+      } else if (this.isSpare_(frameIndex)) {
         score += 10 + this.rolls_[frameIndex + 2];
         frameIndex += 2;
       } else {
@@ -25,6 +29,10 @@ class Game {
 
   isSpare_(frameIndex) {
     return this.rolls_[frameIndex] + this.rolls_[frameIndex + 1] === 10;
+  }
+
+  isStrike_(frameIndex) {
+    return this.rolls_[frameIndex] === 10;
   }
 }
 
