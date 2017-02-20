@@ -9,6 +9,11 @@ describe('Bowling Game', function() {
     }
   };
 
+  let rollSpare = function() {
+    game.roll(5);
+    game.roll(5);
+  };
+
   beforeEach(function() {
     game = new Game();
   });
@@ -25,6 +30,13 @@ describe('Bowling Game', function() {
   it('handles all ones', () => {
     rollMany(20, 1);
     expect(game.score()).toEqual(20);
+  });
+
+  it('handles one spare', () => {
+    rollSpare();
+    game.roll(3);
+    rollMany(17, 0);
+    expect(game.score()).toEqual(16);
   });
 });
 
