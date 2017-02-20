@@ -50,5 +50,10 @@ describe('Bowling Game', function() {
     rollMany(16, 0);
     expect(game.score()).toEqual(24);
   });
+
+  it('handles perfect game', () => {
+    rollMany(12, 10);
+    expect(game.score()).toEqual(300);
+  });
 });
 

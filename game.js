@@ -13,7 +13,6 @@ class Game {
     let frameIndex = 0;
     for (let frame = 0; frame < 10; ++frame) {
       if (this.isStrike_(frameIndex)) {
-        //strike
         score += 10 + this.rolls_[frameIndex + 1] + this.rolls_[frameIndex + 2];
         frameIndex++;
       } else if (this.isSpare_(frameIndex)) {
